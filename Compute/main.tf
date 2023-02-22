@@ -1,15 +1,29 @@
-resource "aws_instance" "webserver" {
-  ami           = var.ami
-  instance_type = var.instance_type[0]
+resource "aws_instance" "helloworld" {
+  ami                         = var.ami
+  instance_type               = var.instance_type[0]
   associate_public_ip_address = var.associate_public_ip_address
-  tags = var.tags
-  user_data = <<-EOF
+  tags                        = var.tags
+  user_data                   = <<-EOF
 #!/bin/bash
-sudo yum update -y
-sudo yum install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo bash -c 'echo your very first web server > /var/www/html/index.html'
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "First Webserver" > /var/www/html/index.html
+
+EOF
+}
+
+resource "aws_instance" "helloworld2" {
+  ami                         = var.ami
+  instance_type               = var.instance_type[1]
+  associate_public_ip_address = var.associate_public_ip_address
+  tags                        = var.tags
+  user_data                   = <<-EOF
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "Second Webserver" > /var/www/html/index.html
 
 EOF
 }

@@ -26,6 +26,6 @@ variable "tags" {
 variable "associate_public_ip_address" {
   description = "Ip address for instance"
   type        = bool
-  default = true
+  default     = true
 
 }
