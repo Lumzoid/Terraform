@@ -18,9 +18,9 @@ resource "aws_elb" "helloworld" {
     interval            = 30
   }
 
-  instances                   = ["${aws_instance.helloworld.id}", "${aws_instance.helloworld2.id}"]
-  cross_zone_load_balancing   = true
-  idle_timeout                = 50
+  instances                 = ["${aws_instance.helloworld.id}", "${aws_instance.helloworld2.id}"]
+  cross_zone_load_balancing = true
+  idle_timeout              = 50
 
   tags = {
     Name = "terraform-elb"

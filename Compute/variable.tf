@@ -29,3 +29,19 @@ variable "associate_public_ip_address" {
   default     = true
 
 }
+
+#Route 53 variable
+
+variable "domain-name" {
+  description = "domain name"
+  type        = string
+  default     = "oluabi.click"
+
+}
+
+variable "record_name" {
+  description = "sub domain name"
+  type        = string
+  default     = "www"
+
+}
